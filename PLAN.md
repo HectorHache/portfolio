@@ -109,3 +109,12 @@
 **UPSTREAM DOWN (NO-CHANNEL, distributor hammered/DDoS)**: SeekAI py+zen (ALL premium: opus-5/4-8, sonnet-5, deepseek-pro, gpt-5-6, grok, kimi; fable-5 responds but bot-flagged) · Blueminds (gpt-5.6-sol/luna/terra, gpt-4o, deepseek-pro all NO-CHANNEL — gpt-4o WAS 200 on Sep 4; kimi-k2.5 + gemma-4-26b timeouts; llama/nemotron → 410 EOL) · Tabi py+zen (opus-5, opus-5-thinking) · Gorouter py+zen (same)
 **KEY-LEVEL**: JW py+zen claude-opus-5 → 403 · Command Code keys valid but 0 credits (all models "insufficient credits") · Apinex premium → 402 insufficient balance
 **METHOD NOTE**: rate limits are REAL (SeekAI 5 req/min incl failures; Blueminds similar) → always pace ≥15s/provider; never blast parallel.
+
+
+## Changelog 2026-09-08 (v10 round)
+- Backup of v9 state: `~/Projects/portfolio-backup-260907-V1/` (NOTES.md inside; restore = cp -R back).
+- v10: OG/social meta + SVG favicon + og-card.png (1200x630, source assets/og-card.svg; re-render with real rasterizer before publish), career stats strip in About, closing CTA section, print stylesheet, "Rebuilt 2026-09-08" stamp, a11y (prefers-reduced-motion, :focus-visible), cross-link to #method, diagram cards all 2-line equal height (A air reduced to ~10px), tooling notes muted style, 11 evidence lines refactored, strip -> "Skeptical? Watch it run."
+- Git repo initialized (main), two commits (v9 base + v10).
+- Deploy prep: deploy.sh (npx wrangler pages deploy site + dash-landing), DEPLOY.md (CF Pages projects portfolio-hache + dash-hache; Porkbun CNAME/TXT/ALIAS configs; take-down steps).
+- hector.app DNS: forwarding verified working (301 -> linkedin.com/in/hectormm); www record added by Mick; stale resolver cache was the "DNS error".
+- ego-browser 0.4.7.4 (rebuilt 12:30) broke the old nodejs driver contract: openOrReuseTab/js helpers gone; new flow claimTaskSpace -> useTaskSpace -> createTab -> sendCDPMessage; ego.snapshot writes to managed storage (file not on disk). Browser-verify harness needs rebuild before next visual round.
