@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Héctor Miguel: AI engineering, operations discipline</title>
+<meta name="description" content="I built systems that ran call centers for over 10 years. Now I build systems that run themselves. AI engineering, NL/EU remote.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://hache.app/">
+<meta property="og:title" content="Héctor Miguel: AI engineering">
+<meta property="og:description" content="I built systems that ran call centers for over 10 years. Now I build systems that run themselves.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hache.app/">
+<meta property="og:image" content="https://hache.app/assets/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Héctor Miguel: AI engineering, operations discipline">
+<meta name="twitter:description" content="I built systems that ran call centers for over 10 years. Now I build systems that run themselves.">
+<meta name="theme-color" content="#0f1115">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f1115'/%3E%3Cpath d='M18 16v32M46 16v32M18 32h28' stroke='%237db4e8' stroke-width='7' stroke-linecap='round' fill='none'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --ink:#111;
+    --ink-2:#333;
+    --muted:#6b6b6b;
+    --rule:#e2e2e2;
+    --rule-2:#cfcfcf;
+    --paper:#fff;
+    --accent:#2b6cb0;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Helvetica Neue", sans-serif;
+    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  html[data-theme="dark"]{
+    --ink:#e8e8e8; --ink-2:#c9c9c9; --muted:#9a9a9a; --rule:#3a3a3a; --rule-2:#4a4a4a; --paper:#0f1115; --accent:#7db4e8; --tbar-bg:rgba(15,17,21,.78);
+  }
+  :root{--tbar-bg:rgba(255,255,255,.78)}
+  .tbar{
+    position:fixed;top:0;left:0;right:0;z-index:60;
+    background:var(--tbar-bg);
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--rule);
+  }
+  .tbar-in{display:flex;justify-content:flex-end;align-items:center;height:38px;gap:8px}
+  .tbar-ver{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-right:auto;font-family:var(--mono)}
+  .tbar-li{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--ink);text-decoration:none;border:1px solid var(--rule);border-radius:999px;padding:3px 11px;transition:background .15s,color .15s,border-color .15s}
+  .tbar-li:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .tbar-li svg{width:11px;height:11px;fill:currentColor}
+  .theme{
+    position:relative;display:flex;gap:4px;
+    background:var(--rule-2);border-radius:999px;padding:3px;
+  }
+  .knob{
+    position:absolute;top:3px;left:3px;width:26px;height:26px;border-radius:50%;
+    background:var(--paper);box-shadow:0 1px 3px rgba(0,0,0,.35);
+    transition:transform .18s ease;pointer-events:none;z-index:1;
+  }
+  .theme[data-active="light"] .knob{transform:translateX(30px)}
+  .th{
+    border:0;cursor:pointer;width:26px;height:26px;border-radius:50%;
+    background:transparent;color:var(--muted);font-size:13px;line-height:1;
+    display:grid;place-items:center;position:relative;z-index:2;
+    transition:color .15s;
+  }
+  .th[aria-pressed="true"]{color:var(--ink)}
+  body{padding-top:38px}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:17px;
+    line-height:1.55;
+    font-kerning:normal;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{width:100%;max-width:1100px;margin:0 auto;padding:0 20px}
+  a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(43,108,176,.35)}
+  a:hover{border-bottom-color:var(--accent)}
+  h1,h2,h3{font-weight:600;letter-spacing:-0.02em;margin:0}
+  .eyebrow{
+    font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--muted);font-weight:600;
+  }
+  hr.rule{border:0;border-top:1px solid var(--rule);margin:0}
+
+  /* ---------- masthead ---------- */
+  header.masthead{padding:22px 0 0}
+  .masthead-row{
+    display:flex;justify-content:space-between;align-items:baseline;
+    gap:16px;flex-wrap:wrap;
+    padding-bottom:14px;border-bottom:1px solid var(--ink);
+  }
+  .name{font-size:15px;font-weight:600;letter-spacing:.01em}
+  .name span{color:var(--muted);font-weight:400}
+  .avail{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+
+  /* ---------- hero ---------- */
+  section{padding:0}
+  .hero{padding:44px 0 8px}
+  .hero h1{
+    font-size:clamp(30px,7.6vw,58px);
+    line-height:1.06;
+    letter-spacing:-0.033em;
+    max-width:44ch;
+  }
+  .hero .support{
+    margin:20px 0 0;
+    font-size:clamp(15px,3.6vw,18px);
+    color:var(--ink-2);
+    max-width:80ch;
+    line-height:1.5;
+  }
+  .hero .meta{
+    margin:22px 0 0;
+    font-size:13px;color:var(--muted);
+    display:flex;flex-wrap:wrap;gap:6px 14px;
+  }
+  .hero .meta b{font-weight:600;color:var(--ink-2)}
+
+  .topo{margin:30px 0 0}
+  .topo-frame{
+    border-top:1px solid var(--ink);
+    border-bottom:1px solid var(--rule);
+    background:var(--paper);
+  }
+  .topo iframe{display:block;width:100%;height:620px;border:0;background:var(--paper);overflow:hidden}
+  .topo-cap{
+    display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    padding:9px 0 0;font-size:12px;color:var(--muted);
+  }
+
+  /* ---------- proof strip ---------- */
+  .strip{padding:20px 0 22px}
+  .strip-head{margin:0 0 6px}
+  .strip-head h3{font-size:22px;font-weight:600;letter-spacing:-.01em;margin:0 0 4px;color:var(--ink)}
+  .strip-head p{font-size:13.5px;color:var(--muted);margin:0 0 18px;max-width:none}
+  .figures{
+    display:grid;grid-template-columns:1fr;gap:0;
+    border-top:1px solid var(--ink);
+  }
+  .fig{padding:18px 0;border-bottom:1px solid var(--rule)}
+  .fig .n{
+    font-size:clamp(26px,6.4vw,34px);font-weight:600;letter-spacing:-0.03em;
+    line-height:1.1;font-variant-numeric:tabular-nums;
+  }
+  .fig .n em{font-style:normal;color:var(--muted);font-weight:400}
+  .fig .l{margin-top:6px;font-size:13px;color:var(--muted);max-width:38ch}
+  .strip-note{margin-top:16px;font-size:13px;color:var(--muted)}
+
+  /* ---------- section heads ---------- */
+  .sec{padding:33px 0}
+  .sec-head{
+    display:flex;align-items:baseline;gap:14px;
+    border-bottom:1px solid var(--ink);padding-bottom:10px;margin-bottom:26px;
+  }
+  .sec-head h2{font-size:clamp(19px,4.4vw,24px);letter-spacing:-0.02em}
+  .sec-head .idx{font-size:11px;letter-spacing:.16em;color:var(--muted);font-weight:600}
+  .sec-lede{margin:-8px 0 26px;font-size:15px;color:var(--muted);max-width:none}
+
+  /* ---------- projects ---------- */
+  .cards{display:grid;grid-template-columns:1fr;gap:0}
+  .card{padding:22px 0;border-bottom:1px solid var(--rule)}
+  .card:first-child{border-top:1px solid var(--rule)}
+  .card-top{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+  .card h3{font-size:18px;letter-spacing:-0.01em}
+  .card h3 .slug{font-family:var(--mono);font-size:15px;letter-spacing:0;font-weight:600}
+  .tag{
+    font-size:10px;letter-spacing:.15em;text-transform:uppercase;font-weight:700;
+    color:var(--muted);border:1px solid var(--rule-2);
+    padding:2px 6px;white-space:nowrap;line-height:1.5;
+  }
+  .tag.shipped{color:var(--ink);border-color:var(--ink)}
+  .tag.shipping{color:var(--accent);border-color:rgba(43,108,176,.55)}
+  .tag.growing{color:var(--accent);border-color:rgba(43,108,176,.55)}
+  .card p.proves{margin:10px 0 0;font-size:15.5px;color:var(--ink-2);max-width:74ch;line-height:1.52}
+  .ev{margin:10px 0 0;font-size:12.5px;color:var(--muted);max-width:74ch}
+  .ev .k{letter-spacing:.12em;text-transform:uppercase;font-size:10px;font-weight:700;color:#8a8a8a;margin-right:6px}
+  .toolbelt{
+    margin:12px 0 0;padding:10px 0 0;border-top:1px dotted var(--rule-2);
+    font-size:12.5px;color:var(--muted);max-width:74ch;
+  }
+
+  /* ---------- ram table ---------- */
+  .ram{margin:26px 0 0;border-top:1px solid var(--ink)}
+  .ram table{width:100%;border-collapse:collapse;font-size:14px}
+  .ram th,.ram td{text-align:left;padding:10px 12px 10px 0;border-bottom:1px solid var(--rule);font-variant-numeric:tabular-nums}
+  .ram th{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .ram td.d{color:var(--accent);font-weight:600}
+  .ram caption{caption-side:bottom;text-align:left;font-size:12px;color:var(--muted);padding-top:9px}
+
+  /* ---------- about ---------- */
+  .about{display:grid;grid-template-columns:1fr;gap:0}
+  .about p{margin:0 0 16px;font-size:16px;line-height:1.62;color:var(--ink-2);max-width:68ch}
+  .about p:last-of-type{margin-bottom:0}
+  .about strong{color:var(--ink);font-weight:600}
+  .facts{
+    margin:28px 0 0;border-top:1px solid var(--rule);
+    font-size:13.5px;
+  }
+  .facts dl{margin:0;display:grid;grid-template-columns:1fr;gap:0}
+  .facts div.row{display:flex;gap:14px;padding:11px 0;border-bottom:1px solid var(--rule)}
+  .facts dt{
+    flex:0 0 34%;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--muted);font-weight:700;padding-top:2px;
+  }
+  .facts dd{margin:0;color:var(--ink-2)}
+
+  /* ---------- method ---------- */
+  .flow svg text{fill:var(--ink)}
+  .flow svg g[font-size="12.5"] text, .flow svg g[font-size="10.5"] text{fill:var(--muted)}
+  .flow svg rect,.flow svg path{stroke:var(--ink)}
+  .flow svg marker path{fill:var(--ink)}
+  @media(max-width:640px){.steps{margin-top:20px}}
+  .flow{
+    border-top:1px solid var(--ink);border-bottom:1px solid var(--rule);
+    padding:18px 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+  }
+  .flow svg{display:block;height:auto;min-width:640px;width:100%}
+  .flow-cap{margin:10px 0 0;font-size:12px;color:var(--muted)}
+  .steps{margin:26px 0 0;border-top:1px solid var(--rule)}
+  .step{display:flex;gap:14px;padding:13px 0;border-bottom:1px solid var(--rule)}
+  .step .sn{
+    flex:0 0 26px;font-family:var(--mono);font-size:12px;color:var(--muted);padding-top:3px;
+    font-variant-numeric:tabular-nums;
+  }
+  .step .st{flex:1 1 auto;min-width:0;font-size:14.5px;color:var(--ink-2);max-width:none}
+  .step details.tech{margin-top:8px}
+  .tech summary{
+    font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);
+    cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:7px;user-select:none;
+  }
+  .tech summary::-webkit-details-marker{display:none}
+  .tech summary::before{content:'+';font-family:var(--mono);font-size:13px;line-height:1;display:inline-block;transition:transform .15s ease}
+  .tech[open] summary::before{transform:rotate(45deg)}
+  .tech p{font-size:13.5px;color:var(--ink-2);line-height:1.6;margin:9px 0 2px;max-width:none}
+  .tech .toolbelt{font-size:12.5px;color:var(--muted);max-width:74ch;line-height:1.5;margin:12px 0 0;padding:10px 0 0;border-top:1px dotted var(--rule-2)}
+  .tech .toolbelt + .toolbelt{border-top:0;margin-top:8px;padding-top:0}
+  .step .st-t{font-size:16px;font-weight:600;color:var(--ink);margin:0 0 4px;letter-spacing:-.01em}
+  .step .st-x{margin:0;font-size:14.5px;color:var(--ink-2);line-height:1.55;max-width:none}
+
+  /* ---------- footer ---------- */
+  footer{padding:34px 0 46px;border-top:1px solid var(--ink);margin-top:10px}
+  .foot-row{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+  .foot-row .built{flex:1 1 auto;min-width:0;max-width:none}
+
+  /* ---------- desktop ---------- */
+  @media (min-width:720px){
+    body{font-size:18px}
+    .wrap{padding:0 40px}
+    .hero{padding:64px 0 8px}
+    .figures{grid-template-columns:repeat(3,1fr);column-gap:36px}
+    .fig{border-bottom:1px solid var(--rule)}
+    .cards{grid-template-columns:1fr 1fr;column-gap:48px}
+    .card:nth-child(2){border-top:1px solid var(--rule)}
+    .about{grid-template-columns:1.55fr 1fr;column-gap:56px}
+    .facts{margin-top:0;border-top:1px solid var(--rule)}
+    .sec{padding:40px 0}
+    .flow svg{min-width:0}
+  }
+  @media (min-width:1000px){
+    .hero h1{font-size:62px}
+    .topo iframe{height:620px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+  }
+  @media print{
+    .topo iframe{display:none}
+    a{color:var(--ink);border:0}
+  }
+  /* ---------- career stats ---------- */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:0 0 34px}
+  .stat{border:1px solid var(--rule);border-radius:10px;padding:16px 12px;text-align:center}
+  .stat b{display:block;font-size:clamp(20px,3.6vw,28px);letter-spacing:-.02em;color:var(--ink)}
+  .stat span{display:block;margin-top:4px;font-size:11.5px;color:var(--muted);letter-spacing:.02em}
+
+  /* ---------- closing cta ---------- */
+  .cta{border-top:1px solid var(--ink);padding:56px 0 64px;text-align:center}
+  .cta h2{font-size:clamp(21px,4.6vw,30px);letter-spacing:-.02em;line-height:1.25;max-width:26ch;margin:0 auto;color:var(--ink)}
+  .cta-sub{margin:14px 0 0;color:var(--muted);font-size:13.5px}
+  .cta-actions{margin:26px 0 0}
+  .cta-actions .tbar-li{font-size:13.5px;padding:7px 18px}
+
+  /* ---------- print ---------- */
+  @media print{
+    html[data-theme="dark"],html{--ink:#111;--ink-2:#333;--muted:#6b6b6b;--rule:#e2e2e2;--rule-2:#cfcfcf;--paper:#fff;background:#fff}
+    .tbar,.topo,.theme,details.tech{display:none!important}
+    .flow svg{min-width:0;width:100%}
+    .flow svg rect,.flow svg path{stroke:#111}
+    .flow svg g[font-size="12.5"] text,.flow svg g[font-size="10.5"] text{fill:#6b6b6b}
+    .sec,.card{padding:22px 0;page-break-inside:avoid}
+    a[href]{color:#2b6cb0}
+    a[href^="http"]::after{content:" (" attr(href) ")";font-size:11px;color:#6b6b6b}
+  }
+
+  /* ---------- a11y ---------- */
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{transition:none!important;animation:none!important}
+  }
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+</style>
+</head>
+<body>
+<div class="tbar"><div class="wrap tbar-in">
+  <span class="tbar-ver" title="build">v10</span>
+  <a class="tbar-li" href="https://hector.app" target="_blank" rel="noopener" aria-label="LinkedIn profile">LinkedIn<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
+  <div class="theme" role="group" aria-label="Color theme" data-active="dark">
+    <span class="knob" aria-hidden="true"></span>
+    <button class="th" data-th="dark" aria-pressed="true" aria-label="Dark theme" title="Dark theme">&#9788;</button>
+    <button class="th" data-th="light" aria-pressed="false" aria-label="Light theme" title="Light theme">&#9726;</button>
+  </div>
+</div></div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="masthead-row">
+      <div class="name">Héctor Miguel <span>/ Hache</span></div>
+      <div class="avail">AI engineering &middot; Netherlands + EU remote &middot; 20&ndash;32h</div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero" id="top">
+    <div class="wrap">
+      <h1>I built systems that ran call centers for over 10 years. Now I build systems that run themselves.</h1>
+      <p class="support">I made +10.000-agent operations predictable. Today I build the agents.</p>
+      <p class="meta">
+        <span><b>Ops background:</b> Klarna, 5CA, Microsoft</span>
+        <span><b>Focus:</b> multi-agent stacks, LLM gateways, reverse engineering</span>
+        <span><b>Terms:</b> ZZP or payroll</span>
+      </p>
+    </div>
+
+    <div class="topo">
+      <div class="wrap">
+        <div class="topo-frame">
+          <iframe src="assets/topology.html?v=2" scrolling="no" style="width:100%;height:620px;border:0;background:var(--paper)" title="Network topology" loading="eager"></iframe>
+        </div>
+        <div class="topo-cap">
+          <span>Fig. 1: Live network topology of the household stack. Interactive: hover or tap a node.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="strip">
+    <div class="wrap">
+      <div class="strip-head">
+        <h3>The rebuild, measured</h3>
+        <p>After hundreds of tests, iterations and toolings trialed, the stack had grown more complicated than its job. It needed an inside look: verified, compacted, simplified. Until it was boring again. Before &rarr; after, straight from the stack's own monitoring, not from a slide.</p>
+      </div>
+      <div class="figures">
+        <div class="fig">
+          <div class="n">34 <em>&rarr;</em> 8</div>
+          <div class="l">Processes across the stack after consolidation. Fewer moving parts, same output.</div>
+        </div>
+        <div class="fig">
+          <div class="n">10.3 <em>&rarr;</em> 4.8 <em>GB</em></div>
+          <div class="l">Resident memory across the stack, measured before and after the rebuild.</div>
+        </div>
+        <div class="fig">
+          <div class="n">24/7</div>
+          <div class="l">Unattended uptime with cron self-healing and a self-monitoring dashboard.</div>
+        </div>
+      </div>
+      <p class="strip-note">Skeptical? <a href="https://dash.hache.app" rel="noopener">Watch it run.</a></p>
+    </div>
+  </section>
+
+  <section class="sec" id="work">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="idx">01</span>
+        <h2>Work</h2>
+      </div>
+      <p class="sec-lede">Eleven systems, ordered by what they prove. Every entry carries an evidence line: a link, a diagram, a measurement or a screenshot.</p>
+
+      <div class="cards">
+
+        <article class="card">
+          <div class="card-top">
+            <h3><span class="slug">agent-stack</span></h3>
+            <span class="tag shipped">Shipped</span>
+          </div>
+          <p class="proves">A household AI stack that runs itself: multi-agent orchestration, 20+ LLM providers unified, self-healing services, live self-monitoring dashboard. Built to be boring, which is the point.</p>
+          <p class="ev"><span class="k">Evidence</span>RAM table below: 34&rarr;8 processes, 10.3&rarr;4.8 GB &middot; crash-loop forensics write-up &middot; live dashboard</p>
+          <details class="tech"><summary>Tooling notes</summary>
+            <p class="toolbelt">Evaluated: Cursor, Open Claw, Cherry Studio, J.ai, DeepSeek Harness, ZCode. Settled on herdr+omp (via Omarchy) for orchestration, Open WebUI for the household gateway. Choice by testing, not by hype.</p>
+            <p class="toolbelt">The laptop node runs <b>Omarchy</b>, an AI-first Linux OS built by and for agents (by David Heinemeier Hansson), customized with my own shell plugins and integrations, then packaged into setupclone so the whole environment replicates with one paste.</p>
+          </details>
+        </article>
+
+        <article class="card">
+          <div class="card-top">
+            <h3><span class="slug">drops</span></h3>
+            <span class="tag growing">Growing</span>
+          </div>
+          <p class="proves">Reverse-engineered Twitch's drops graph, including a Kasada bot-mitigation token mint, into a self-updating public dashboard. It watches a platform that moves the goalposts every week, and stays up anyway.</p>
+          <p class="ev"><span class="k">Evidence</span><a href="https://drops.hache.app" rel="noopener">live here</a> &middot; how I cracked its anti-bot layer &middot; UI refresh in progress</p>
+        </article>
+
+        <article class="card">
+          <div class="card-top">
+            <h3><span class="slug">chat&middot;hache</span></h3>
+            <span class="tag growing">Growing</span>
+          </div>
+          <p class="proves">A private-by-design AI gateway for my family: Google OAuth SSO, a custom model bridge with automatic failover, Let's Encrypt TLS over a tailnet-only domain. Real users, daily use, no data leaving the device.</p>
+          <p class="ev"><span class="k">Evidence</span>Blurred screenshots, counts-only stats &middot; architecture diagram &middot; conversation content is never published</p>
+        </article>
+
+        <article class="card">
+          <div class="card-top">
+            <h3><span class="slug">providers</span></h3>
+            <span class="tag shipped">Shipped</span>
+          </div>
+          <p class="proves">22 LLM providers and roughly 380 models unified in one config with per-model health verification, including the hard lessons: credit pools warn me before they run dry, premium channels get hammered, WAF walls go up. Gateway engineering with the scars to prove it.</p>
+          <p class="ev"><span class="k">Evidence</span>Routing diagram, safe for the public &middot; the failure modes that shaped it, in writing</p>
+        </article>
+
+        <article class="card">
+          <div class="card-top">
+            <h3><span class="slug">setupclone</span></h3>
+            <span class="tag shipped">Shipped</span>
+          </div>
+          <p class="proves">My entire agentic environment packaged as a de-personalized, replicable repo with one-paste installers. I don't just use agents, I productize the workflow around them.</p>
+          <p class="ev"><span class="k">Evidence</span>One-paste installers for Linux and Windows &middot; 47 skills, sanitized &middot; public repo</p>
+        </article>
+
+        <article class="card">
+          <div class="card-top">
+            <h3><span class="slug">homelab</span></h3>
+            <span class="tag shipping">Shipping</span>
+          </div>
+          <p class="proves">A self-hosted Docker farm on Fedora: media automation, monitoring, cron self-healing, Telegram bots. Docker, Linux, scripting, service design: different capabilities, same discipline.</p>
+          <p class="ev"><span class="k">Evidence</span>A Docker farm, running right now on Fedora &middot; compose files and service inventory</p>
+        </article>
+
+        <article class="card">
+          <div class="card-top">
+            <h3><span class="slug">chat-demo</span></h3>
+            <span class="tag">Coming soon</span>
+          </div>
+          <p class="proves">Ask the system itself how it works: a small public version of the household gateway with retrieval over the whole architecture. Natural-language questions, answered by the very systems you're asking about.</p>
+          <p class="ev"><span class="k">Evidence</span>In build. It will answer your questions before your CV does.</p>
+        </article>
+
+        <article class="card">
+          <div class="card-top">
+            <h3><span class="slug">meta-portfolio</span></h3>
+            <span class="tag shipping">Shipping</span>
+          </div>
+          <p class="proves">A self-built four-model debate skill produced the starting line; an approval gate that only I can pass locked it in; and the site was verified with browser automation. A portfolio built by the systems it describes.</p>
+          <p class="ev"><span class="k">Evidence</span>You are looking at it: every line passed the human gate &middot; see <a href="#method" rel="noopener">section 03</a> for how</p>
+        </article>
+
+        <article class="card">
+          <div class="card-top">
+            <h3><span class="slug">karaoke</span></h3>
+            <span class="tag shipped">Shipped</span>
+          </div>
+          <p class="proves">Reverse-engineered a 15-year-old karaoke download protocol, mapped the household's listening history onto it, wired XLR mics, projector and app together. Engineering is also a party trick.</p>
+          <p class="ev"><span class="k">Evidence</span>Party-proof: XLR mics, projector, app, one weekend &middot; protocol write-up &middot; photos</p>
+        </article>
+
+        <article class="card">
+          <div class="card-top">
+            <h3><span class="slug">pvault</span></h3>
+            <span class="tag shipped">Shipped</span>
+          </div>
+          <p class="proves">Everything I know lives in Obsidian, and has for years: daily logs, to-dos, personal and professional notes, all plain Markdown. The agent layer on top adds a compile pass (inbox to layers, git-backed sync, per-device separation) plus a self-built 3D atlas that maps links between subjects. Plain text was the point before AI made it fashionable; now the agents read it directly.</p>
+          <p class="ev"><span class="k">Evidence</span>Proven by its architecture, not its secrets: system diagram only, content never shown</p>
+        </article>
+
+        <article class="card">
+          <div class="card-top">
+            <h3><span class="slug">skills-library</span></h3>
+            <span class="tag shipped">Shipped</span>
+          </div>
+          <p class="proves">A curated library of 47 reusable agent skills, from browser automation to protocol reverse engineering to multi-model debate. Agents are only as good as the capabilities they're given; this is the pack I give mine, and it keeps expanding by the second.</p>
+          <p class="ev"><span class="k">Evidence</span>Open library: 47 skills, descriptions sanitized, readable by anyone</p>
+        </article>
+
+      </div>
+
+      <div class="ram">
+        <table>
+          <caption>Table 1: agent-stack consolidation, measured by the stack's own monitor. Same workload, fewer processes.</caption>
+          <thead>
+            <tr><th scope="col">Metric</th><th scope="col">Before</th><th scope="col">After</th><th scope="col">Delta</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Processes</td><td>34</td><td>8</td><td class="d">&minus;26</td></tr>
+            <tr><td>Resident memory</td><td>10.3 GB</td><td>4.8 GB</td><td class="d">&minus;5.5 GB</td></tr>
+            <tr><td>Unattended uptime</td><td>restart on failure</td><td>cron self-healing</td><td class="d">24/7</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="about">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="idx">02</span>
+        <h2>About</h2>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>10+</b><span>years in operations</span></div>
+        <div class="stat"><b>10.000+</b><span>agents at peak</span></div>
+        <div class="stat"><b>24/7</b><span>self-running stack</span></div>
+        <div class="stat"><b>47</b><span>reusable skills</span></div>
+      </div>
+      <div class="about">
+        <div>
+          <p>For over 10 years my job was making large operations predictable. Workforce planning across call centers with 10.000+ agents at peak, at Klarna, 5CA and Microsoft. Erlang-C forecasts, shrinkage models, intraday steering, service-level recovery when a queue went sideways at 09:00. The work taught one lesson repeatedly: <strong>a system that depends on someone watching it is not a system yet.</strong></p>
+          <p>Agents were the obvious next step. The same questions apply, only the workers changed: what is the load, where does it queue, what happens when a dependency fails, how do you know before a user tells you. So I stopped reading about it and built the thing. A household stack that orchestrates multiple agents, unifies 22 LLM providers behind one config, serves my family through an authenticated gateway, monitors itself, and heals itself on a schedule.</p>
+          <p>What I bring is not a course certificate. It is over 10 years of capacity planning and failure analysis, pointed at LLM infrastructure, plus a running production system whose numbers I can show. I read systems for patterns and I build the boring parts first, because the boring parts are what keep running at 03:00.</p>
+        </div>
+        <div class="facts">
+          <dl>
+            <div class="row"><dt>Based</dt><dd>Netherlands. Available for NL + NL/EU-remote jobs.</dd></div>
+            <div class="row"><dt>Availability</dt><dd>Part-time, 20&ndash;32h per week.</dd></div>
+            <div class="row"><dt>Engagement</dt><dd>ZZP contract or payroll.</dd></div>
+            <div class="row"><dt>Building with</dt><dd>Python, Bash, Docker, Linux (Fedora, Arch), Tailscale, Caddy, OAuth, LLM gateway routing, browser automation.</dd></div>
+            <div class="row"><dt>Prior craft</dt><dd>Erlang-C capacity modelling, forecasting, intraday operations, WFM tooling.</dd></div>
+            <div class="row"><dt>Toolbelt</dt><dd>Evaluated Cursor, Open Claw, Cherry Studio, J.ai, DeepSeek Harness, ZCode. Settled on <b>herdr</b>+<b>omp</b>. Choice by testing, not by hype.</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="method">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="idx">03</span>
+        <h2>Method</h2>
+      </div>
+      <p class="sec-lede">How this page was made, which is also how the stack iterates and adapts: debate, gate, build, verify, ship, maintain. The loop is the deliverable.</p>
+
+      <div class="flow">
+        <svg viewBox="0 0 1105 250" role="img" aria-labelledby="flowTitle flowDesc" preserveAspectRatio="xMidYMid meet">
+          <title id="flowTitle">Build pipeline</title>
+          <desc id="flowDesc">Four-model debate produces a starting line of four forks drafted by the model, which passes a human approval gate by Héctor, then a frontier model pass with a one-shot build, then real time verification through an AI-only browser pass, then commit and publish to its own hache.app domain, then rolling maintenance, monthly, that feeds the next iteration.</desc>
+          <defs>
+            <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#111"></path>
+            </marker>
+          </defs>
+          <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" fill="#111">
+
+            <g stroke="#111" stroke-width="1" fill="none">
+              <rect x="14" y="42" width="181" height="66"></rect>
+              <rect x="216" y="42" width="159" height="66"></rect>
+              <rect x="396" y="42" width="126" height="66"></rect>
+              <rect x="543" y="42" width="163" height="66"></rect>
+              <rect x="727" y="42" width="170" height="66"></rect>
+              <rect x="918" y="42" width="173" height="66"></rect>
+              <rect x="419" y="164" width="221" height="63"></rect>
+            </g>
+
+            <g font-size="15" font-weight="600" text-anchor="middle">
+              <text x="104.5" y="70">4-model debate</text>
+              <text x="295.5" y="70">starting line</text>
+              <text x="459" y="70">human gate</text>
+              <text x="624.5" y="70" font-size="14">frontier model pass</text>
+              <text x="812" y="70" font-size="14">real time verification</text>
+              <text x="1004.5" y="70">commit and publish</text>
+              <text x="529.5" y="190">rolling maintenance</text>
+            </g>
+            <g font-size="12.5" fill="#6b6b6b" text-anchor="middle">
+              <text x="104.5" y="88">Opus&middot;Sol&middot;Gemini&middot;DeepSeek</text>
+              <text x="295.5" y="88">model drafted 4 forks</text>
+              <text x="459" y="88">Héctor approval</text>
+              <text x="624.5" y="88">one-shot build</text>
+              <text x="812" y="88">AI-only browser pass</text>
+              <text x="1004.5" y="88">own hache.app domain</text>
+              <text x="529.5" y="208">monthly, feeds the next iteration</text>
+            </g>
+
+            <g stroke="#111" stroke-width="1.25" fill="none" marker-end="url(#ah)">
+              <path d="M195,75 L216,75"></path>
+              <path d="M375,75 L396,75"></path>
+              <path d="M522,75 L543,75"></path>
+              <path d="M706,75 L727,75"></path>
+              <path d="M897,75 L918,75"></path>
+            </g>
+
+            <g stroke="#111" stroke-width="1.25" fill="none" marker-end="url(#ah)">
+              <path d="M1004.5,108 L1004.5,194 L640,194"></path>
+              <path d="M419,194 L104.5,194 L104.5,102"></path>
+            </g>
+
+            <g font-size="10.5" fill="#6b6b6b" letter-spacing="0.08em">
+              <text x="20" y="30">A</text>
+              <text x="222" y="30">B</text>
+              <text x="402" y="30">C</text>
+              <text x="549" y="30">D</text>
+              <text x="733" y="30">E</text>
+              <text x="924" y="30">F</text>
+              <text x="425" y="152">G</text>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <p class="flow-cap">Fig. 2: The pipeline that produced this page. Hand-drawn and dependency-free: it loads anywhere, instantly, and has nothing that can quietly break.</p>
+
+      <div class="steps">
+        <div class="step"><div class="sn">01</div><div class="st"><h4 class="st-t">debate.</h4><p class="st-x">Four AI experts argue the direction from different angles. I referee the tie.</p>
+        <details class="tech"><summary>Technical notes</summary><p>Four models, four biases: Craft (claude-opus-4-8) protects taste, Market (gpt-5.6-sol) protects the reader, Ecosystem (gemini-3.8-flash) protects coherence, Contrarian (deepseek-v4-flash) kills weak ideas. Each answered the four forks in &le;300 words, then a cross-examination round: concede one point, defend your strongest claim, attack the leader's weak spot.</p></details></div></div>
+        <div class="step"><div class="sn">02</div><div class="st"><h4 class="st-t">lock.</h4><p class="st-x">Their verdict becomes one written page: the starting line. Written down, no drift after.</p>
+        <details class="tech"><summary>Technical notes</summary><p>The verdict became a single file, the starting line: winning hook, visual language, ordered project slate, three proof anchors, anti-patterns list. Everything after this point executes that page; a human gate approves each fork before anything is built.</p></details></div></div>
+        <div class="step"><div class="sn">03</div><div class="st"><h4 class="st-t">gate.</h4><p class="st-x">A human approves every step. Models never get to approve their own work.</p>
+        <details class="tech"><summary>Technical notes</summary><p>Three gate decisions in this build were changed or rejected by the owner mid-debate: the one-liner choice, the visual language, and the hero proof anchor (the provider-matrix hero was killed after a human critique about API-injection being unremarkable).</p></details></div></div>
+        <div class="step"><div class="sn">04</div><div class="st"><h4 class="st-t">build.</h4><p class="st-x">One pass against the locked brief. No chat loops, no scope creep mid-build.</p>
+        <details class="tech"><summary>Technical notes</summary><p>One model (claude-opus-5) built the entire page from the locked brief in a single pass: 26 KB of HTML, editorial-minimal, zero external dependencies. Truncated first attempts were detected (finish_reason) and re-fired; the thinking-budget trap was diagnosed and removed.</p></details></div></div>
+        <div class="step"><div class="sn">05</div><div class="st"><h4 class="st-t">verify.</h4><p class="st-x">A bot tests the result like a picky user: viewport, timing, links, layout.</p>
+        <details class="tech"><summary>Technical notes</summary><p>Browser automation (ego-browser) opened the page, toggled both color themes, checked the embedded topology for text overflow and iframe scrollbars, emulated a 390px mobile viewport, and asserted every link resolves. Verification is a machine's job; screenshots are kept as receipts.</p></details></div></div>
+        <div class="step"><div class="sn">06</div><div class="st"><h4 class="st-t">ship and maintain.</h4><p class="st-x">Deterministic deploy, then a monthly ritual that feeds findings back into the next debate.</p>
+        <details class="tech"><summary>Technical notes</summary><p>Deterministic deploy to Cloudflare Pages: byte-identical rebuilds, no surprise diffs. Monthly maintenance: metrics review, stale-evidence retirement, and findings fed back into the next debate round. The loop is the deliverable.</p></details></div></div>
+      </div>
+    </div>
+  </section>
+
+<section class="cta">
+    <div class="wrap">
+      <h2>The systems you just saw run themselves. I built them so I can build the next ones.</h2>
+      <p class="cta-sub">NL + EU remote &middot; ZZP or payroll &middot; 20&ndash;32h a week</p>
+      <p class="cta-actions"><a class="tbar-li" href="https://hector.app" target="_blank" rel="noopener" aria-label="LinkedIn profile">LinkedIn<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a></p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-row">
+      <span class="built">Built by its own subject, verified by its own browser, approved by its own human gate. <span class="rebuilt">Rebuilt 2026-09-08</span></span>
+      <span class="foot-index"><a href="https://dash.hache.app" rel="noopener">Live dashboard</a> &middot; <a href="https://hector.app" rel="noopener">LinkedIn</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var KEY='pf-theme';
+  function apply(t){
+    document.documentElement.setAttribute('data-theme',t);
+    var pill=document.querySelector('.theme'); if(pill){ pill.setAttribute('data-active',t); }
+    var knob=document.querySelector('.knob'); if(knob){ knob.style.transform = t==='light' ? 'translateX(30px)' : 'translateX(0)'; }
+    document.querySelectorAll('.th').forEach(function(x){
+      x.setAttribute('aria-pressed', x.getAttribute('data-th')===t ? 'true':'false');
+    });
+    try{ localStorage.setItem(KEY,t); }catch(e){}
+    var f=document.querySelector('.topo iframe');
+    if(f&&f.contentWindow){ try{ f.contentWindow.postMessage({type:'theme',value:t},'*'); }catch(e){} }
+  }
+  var cur='dark';
+  try{ cur=localStorage.getItem(KEY)||'dark'; }catch(e){}
+  apply(cur);
+  var pill=document.querySelector('.theme');
+  if(pill){
+    pill.addEventListener('click',function(){
+      var cur=document.documentElement.getAttribute('data-theme')||'dark';
+      apply(cur==='dark' ? 'light' : 'dark');
+    });
+  }
+  function fitTopo(){
+    var f=document.querySelector('.topo iframe'); if(!f) return;
+    try{
+      var d=f.contentDocument||f.contentWindow.document; if(!d) return;
+      var h=d.body.scrollHeight||d.documentElement.scrollHeight||0;
+      if(h>120&&h<900) f.style.height=h+'px';
+      if(f.contentWindow&&f.contentWindow.postMessage){
+        f.contentWindow.postMessage({type:'theme',value:document.documentElement.getAttribute('data-theme')||'dark'},'*');
+      }
+    }catch(e){}
+  }
+  fitTopo();
+  var f=document.querySelector('.topo iframe');
+  if(f){
+    f.addEventListener('load',function(){
+      fitTopo();
+      try{ if(f.contentDocument&&f.contentDocument.body){ new ResizeObserver(fitTopo).observe(f.contentDocument.body); } }catch(e){}
+    });
+    window.addEventListener('resize',fitTopo);
+  }
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,206 @@
+{
+  "schema": "portfolio-registry-v1",
+  "updated": "2026-09-07",
+  "owner": "Héctor Miguel (Hache/Mick)",
+  "positioning": {
+    "one_liners": [
+      {
+        "id": 1,
+        "text": "I spent a decade making 10,000-agent operations predictable. Now I build the agents.",
+        "shortlist": 36
+      },
+      {
+        "id": 2,
+        "text": "I built systems that ran call centers for a decade. Now I build systems that run themselves.",
+        "shortlist": 28
+      },
+      {
+        "id": 3,
+        "text": "From Erlang-C to agents: I make complexity run on rails — 10,000 seats then, 24/7 AI stack now.",
+        "shortlist": 33
+      },
+      {
+        "id": 5,
+        "text": "I spent over a decade making +10.000-agent operations predictable. Now I build the agents that run themselves.",
+        "shortlist": 31
+      }
+    ],
+    "dropped": {
+      "id": 4,
+      "shortlist": 22,
+      "note": "gemini pre-shortlist says weakest credibility/clarity — Mick may veto"
+    },
+    "status": "4 finalists → debate round 1 (Opus craft / Sol market / Gemini ecosystem / DeepSeek contrarian)"
+  },
+  "projects": [
+    {
+      "id": "network-topology",
+      "name": "Hand-built network & tailnet engineering (HERO)",
+      "status": "HERO ASSET — TO-MAKE",
+      "public": true,
+      "evidence": [
+        "interactive topology diagram (build)",
+        "Tailscale/NextDNS/Caddy root-daemon world",
+        "LE DNS-01 over dead NS-delegation write-up"
+      ],
+      "card": "A home network built by hand before 'agent' was a job title — tailnet, DNS rewrites, TLS over private domains, TCC forensics, self-healing services. The hero artifact: interactive topology proving builder-since-before-it-was-cool."
+    },
+    {
+      "id": "agent-stack",
+      "name": "The 24/7 Agent Stack (Mac Mini)",
+      "status": "SHIPPED",
+      "public": true,
+      "evidence": [
+        "RAM table 34→8 processes / 10.3→4.8 GB (2026-09-07 real figures)",
+        "crash-loop forensics write-up",
+        "live dashboard (hero)"
+      ],
+      "card": "A household AI stack that runs itself: multi-agent orchestration, 20+ LLM providers unified, self-healing services, live self-monitoring dashboard. Built to be boring — that's the point. Laptop node runs Omarchy (AI-first OS by DHH), customized with own shell plugins and packaged into setupclone. Toolbelt: evaluated Cursor/Open Claw/Cherry Studio/J.ai/DeepSeek Harness/ZCode — settled on herdr+omp. Choice by testing, not by hype."
+    },
+    {
+      "id": "chat-demo",
+      "name": "Chat·hache Demo — talk to the architecture",
+      "status": "IN BUILD",
+      "public": true,
+      "evidence": [
+        "public demo endpoint",
+        "RAG over architecture docs (no PID)"
+      ],
+      "card": "Recruiters can ask the system itself how it works: a small public version of my household gateway with RAG over the entire architecture — natural-language Q&A, no personal data, soft token budgets, graceful quota."
+    },
+    {
+      "id": "homelab",
+      "name": "Docker homelab rebuild",
+      "status": "SHIPPING",
+      "public": true,
+      "evidence": [
+        "running Docker farm on Fedora",
+        "compose files + service inventory",
+        "OS/container updates in progress; media-automation framing only"
+      ],
+      "card": "A self-hosted Docker farm on Fedora: media automation, monitoring, cron self-healing, Telegram bots. Docker, Linux, scripting, apps — different capabilities, same discipline. (Framing: media-automation engineering; no piracy references.)"
+    },
+    {
+      "id": "chat-hache",
+      "name": "Chat·hache.app — private household AI gateway",
+      "status": "GROWING",
+      "public": true,
+      "evidence": [
+        "blurred screenshots + stats strip",
+        "architecture diagram",
+        "metrics pipeline (counts only)"
+      ],
+      "card": "A private-by-design AI gateway for my family: Google OAuth SSO, custom model bridge (AgentRouter + Vertex fallback with JWT auto-refresh), Let's Encrypt TLS over a tailnet-only domain. Real users, daily use, zero data leaks. 'Counts only. Content never leaves the device.'"
+    },
+    {
+      "id": "drops",
+      "name": "Twitch Drops Watchdog",
+      "status": "GROWING",
+      "public": true,
+      "evidence": [
+        "drops.hache.app live",
+        "gql + Kasada CI reverse-engineering write-up",
+        "fully working; optimization + refactor in progress"
+      ],
+      "card": "Reverse-engineered Twitch's drops graph — including a Kasada bot-mitigation token mint — into a self-updating public dashboard. The kind of system that breaks the moment the platform sneezes, and doesn't."
+    },
+    {
+      "id": "meta-portfolio",
+      "name": "This portfolio, built by its own system",
+      "status": "SHIPPING (this page)",
+      "public": true,
+      "evidence": [
+        "debate → gate → build pipeline",
+        "Mermaid.js diagrams embedded",
+        "ego-browser verification ritual"
+      ],
+      "card": "A 4-model debate produced the starting line, a human approval gate locked it, and the site was verified with browser automation. A portfolio built by the very systems it describes — the meta-proof.",
+      "notes": [
+        "receipts panels removed v6 — deferred fuller \"how it was made\" section (workflows + real artifacts)"
+      ]
+    },
+    {
+      "id": "providers",
+      "name": "Multi-provider LLM Gateway Engineering",
+      "status": "SHIPPED",
+      "public": true,
+      "evidence": [
+        "public-safe diagram",
+        "write-up with numbers + honest reliability lessons"
+      ],
+      "card": "22 LLM providers, ~380 models, unified in one config with per-model health verification — including the hard lessons: free-credit pools dry up, premium channels hammer down, WAF walls go up. Gateway engineering with the scars to prove it."
+    },
+    {
+      "id": "job-pipeline",
+      "name": "The Job Pipeline (dogfooding)",
+      "status": "SHIPPED",
+      "public": true,
+      "evidence": [
+        "architecture diagram",
+        "scoring + dedupe design"
+      ],
+      "card": "23+ job sources, two scoring profiles, cross-board dedupe, delta digests delivered by cron to Telegram. Built it to find my own next role — it ships daily."
+    },
+    {
+      "id": "karaoke",
+      "name": "Home Karaoke Pipeline",
+      "status": "SHIPPED",
+      "public": true,
+      "evidence": [
+        "photos",
+        "USDB pull-protocol write-up",
+        "fully shipped, probed and working end-to-end (app + XLR mics + projector) 2026-09-07"
+      ],
+      "card": "Reverse-engineered a 15-year-old karaoke download protocol, mapped the household's Spotify taste to it, wired XLR mics + projector + app. Proof that engineering is also a party trick."
+    },
+    {
+      "id": "setupclone",
+      "name": "setupclone — portable agentic setup",
+      "status": "SHIPPED",
+      "public": true,
+      "evidence": [
+        "public repo",
+        "one-paste installers (Linux/Windows)",
+        "47-skill library sanitized export"
+      ],
+      "card": "My entire agentic environment packaged as a de-personalized, replicable repo with one-paste installers. I don't just use agents — I productize my workflows."
+    },
+    {
+      "id": "pvault",
+      "name": "PVault — second brain on rails",
+      "status": "SHIPPED",
+      "public": true,
+      "evidence": [
+        "system diagram only (never content)",
+        "obsidian-git sync architecture"
+      ],
+      "card": "A knowledge system with a compile pass: inbox → layers → git-backed sync, per-device separation, integrity checks. The architecture is the product; the content stays private."
+    },
+    {
+      "id": "skills-library",
+      "name": "47-skill agent capability library",
+      "status": "SHIPPED",
+      "public": true,
+      "evidence": [
+        "public-safe registry descriptions",
+        "counts + categories"
+      ],
+      "card": "A curated library of 47 reusable agent skills — from browser automation to protocol reverse-engineering to multi-model debate. Agents are only as good as their capability packs."
+    }
+  ],
+  "rules": {
+    "evidence_rule": "no card ships without a link, screenshot, or metric",
+    "exclusions": [
+      "PID",
+      "family/health topics",
+      "household details beyond network topology",
+      "PVault content",
+      "employer-confidential",
+      "financials",
+      "real-estate roadmap"
+    ],
+    "approval_gate": "every publish passes Mick's gate after agent verification",
+    "retire_rule": "cards with stale evidence get demoted",
+    "metrics": "chat card: active-days streak, messages/week, uptime%, bridge requests, latency p50 — counts only"
+  }
+}
