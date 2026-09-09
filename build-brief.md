@@ -1,6 +1,6 @@
 # Opus-5 One-Shot Build Brief (2026-09-07 13:35, pool-warm window)
 
-> Produced from the locked Starting Line (starting-line.md). Opus-5 (craft) builds the full static site in ONE pass. Gates verified after: mobile-first, LCP <2s, ego-browser verify, deterministic deploy to Cloudflare Pages on hache.app.
+> Produced from the locked Starting Line (starting-line.md). Opus-5 (craft) builds the full static site in ONE pass. Gates verified after: mobile-first, LCP <2s, ego-browser verify, deterministic deploy to Cloudflare Workers under hector.app.
 
 ## 1. Mission
 Recruiter-facing portfolio for Héctor Miguel (Hache/Mick), NL/EU-remote AI-engineering roles (ZZP/payroll, part-time 20-32h). Prove he is NOT a generic AI-course grad: 10+ yrs operations discipline (Erlang-C, 10,000-agent call centers, Klarna/Microsoft/5CA) + a real 24/7 self-running agent stack he built himself. Seed creator lane (internal only, never in copy).
@@ -10,7 +10,7 @@ Recruiter-facing portfolio for Héctor Miguel (Hache/Mick), NL/EU-remote AI-engi
 - **Supporting line (#1):** "I spent a decade making 10,000-agent operations predictable. Now I build the agents."
 - **Visual language: editorial-minimal.** Swiss type, generous whitespace, restraint. The ONE dramatic element = the live/interactive hero. No terminal-phosphor styling anywhere. No gradients-as-decor, no glassy cards, no playful tilt.
 - **Hierarchy (hero → body):** agent-stack → drops → chat-hache → providers → setupclone → [new cards below].
-- **Proof anchors:** drops.hache.app (live), RAM table (18→8 sessions / 6.7→4.8 GB), **interactive network topology diagram = the HERO** (asset file provided at /assets/topology.html — embed it, do not redraw).
+- **Proof anchors:** drops.hector.app (live), RAM table (18→8 sessions / 6.7→4.8 GB), **interactive network topology diagram = the HERO** (asset file provided at /assets/topology.html — embed it, do not redraw).
 
 ## 3. Site structure (single static page, sections)
 1. **Hero**: one-liner #2 (large, editorial), supporting #1 as small line, then the interactive topology diagram (full-width, contained), CTA-less (no "hire me" buttons — confidence is quiet).
@@ -33,7 +33,7 @@ graph LR
   B --> C[Mick's gate<br/>approval]
   C --> D[Opus-5 one-shot<br/>build]
   D --> E[ego-browser<br/>verification]
-  E --> F[Cloudflare Pages<br/>hache.app]
+  E --> F[Cloudflare Pages<br/>hector.app]
   F --> G[rolling maintenance<br/>monthly ritual]
   G --> A
 

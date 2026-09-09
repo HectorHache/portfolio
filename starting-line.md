@@ -35,7 +35,7 @@
 
 ## 4. PROOF ANCHORS — hero trio (Opus's ruling, Fork 4)
 
-1. **drops.hache.app** (live, public, un-fakeable running delivery)
+1. **drops.hector.app** (live, public, un-fakeable running delivery)
 2. **RAM table** (18→8 sessions / 6.7→4.8 GB — quantified systems discipline)
 3. **22-provider / ~380-model health matrix** (visible verified scale)
 
@@ -70,7 +70,7 @@
 
 ## 7. D3 MEMO — 3rd proof-anchor recommendations (for Mick's approval)
 
-The locked anchors: **drops.hache.app** (live delivery) + **RAM table** (measured discipline). The 3rd slot must survive the same test Mick just applied: **not reproducible by anyone who can inject an API, not dependent on free-credit pools, verifiable today.**
+The locked anchors: **drops.hector.app** (live delivery) + **RAM table** (measured discipline). The 3rd slot must survive the same test Mick just applied: **not reproducible by anyone who can inject an API, not dependent on free-credit pools, verifiable today.**
 
 **RECOMMENDATION 1 — Chat·hector live gateway** (product + real users + security engineering)
 *Blurred screenshot + one-line architecture (Google SSO, LE TLS over a tailnet-only domain, zero data leaks).*
@@ -95,4 +95,4 @@ The locked anchors: **drops.hache.app** (live delivery) + **RAM table** (measure
 
 ---
 
-*Next: on Mick's approval → Opus-5 one-shot build brief → build (mobile-first, LCP <2s, ego-browser verify) → Cloudflare Pages on hache.app.*
+*Next: on Mick's approval → Opus-5 one-shot build brief → build (mobile-first, LCP <2s, ego-browser verify) → Cloudflare Workers on hector.app.*

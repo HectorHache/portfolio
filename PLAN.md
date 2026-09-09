@@ -19,7 +19,7 @@
 |---|---|---|---|
 | **Agent stack (Mac Mini)** | SHIPPED | RAM table 34→8 processes, 10.3→4.8GB (real figures 2026-09-07); crash-loop forensics | Write-up with numbers + live dashboard |
 | **Chat·hector.app** | GROWING | Live, OAuth SSO, TLS over tailnet; NOT yet in daily use | Blurred screenshots OK; usage counts ONLY after real daily usage (second user onboarding); v1 card = architecture + SSO + "private by design" story |
-| **Drops watchdog** | GROWING | drops.hache.app live, gql+Kasada CI reverse-eng; fully working | UI/visual pass (½ day) + refactor spots → flagship |
+| **Drops watchdog** | GROWING | drops.hector.app live, gql+Kasada CI reverse-eng; fully working | UI/visual pass (½ day) + refactor spots → flagship |
 | **Provider/API engineering** | SHIPPED | 10 gateways, 130+ models unified, health-verified | Public-safe diagram + write-up |
 | **Job-hunt pipeline** | SHIPPED | 23+ sources, scoring, cron→DM | Architecture diagram; dogfooding story |
 | **Karaoke (USDB/USDX)** | SHIPPED | Fully shipped, probed and working end-to-end (app+XLR mics+projector) 2026-09-07 | Photos + pipeline diagram; fun project |
@@ -65,7 +65,7 @@
 ## Decisions (2026-09-04, Mick-approved)
 - **Positioning one-liners** (5, ALL sent to debate 2026-09-07): 1) "I spent a decade making 10,000-agent operations predictable. Now I build the agents." 2) "I built systems that ran call centers for a decade. Now I build systems that run themselves." 3) "From Erlang-C to agents: I make complexity run on rails — 10,000 seats then, 24/7 AI stack now." 4) "Ask my stack: it never sleeps. +10 years ops discipline, now building agents that work while I improve them." 5) "I spent over a decade making +10.000-agent operations predictable. Now I build the agents that run themselves." — pre-shortlist pass (Gemini-3.8-flash scores vs clarity/uniqueness/credibility/role-fit) → 4 finalists → debate champions.
 - **Identity map**: hector.app umbrella (hub + subdomains) · hache.app and pym.one retired · public GitHub = HectorHache · PythonMalone stays private/personal.
-- **Hosting**: Cloudflare Pages on hache.app (free: unlimited bandwidth/requests, 500 builds/mo, existing deterministic auto-deploy skill). Verify hache.app zone is on Cloudflare.
+- **Hosting**: Cloudflare Workers under hector.app (free: unlimited bandwidth/requests, 500 builds/mo, existing deterministic auto-deploy skill). Verify hache.app zone is on Cloudflare.
 - **Live dashboard**: YES as hero element ("watch my stack run itself") — aggregate stats only.
 - **Chat·hector**: blurred screenshots OK; usage counts deferred until real daily usage exists (second user onboarding). v1 card = architecture + SSO + private-by-design.
 - **Drops**: UI pass along the way (not a blocker); card when visually ready.
@@ -73,7 +73,7 @@
 - **Roadmap synergy (context, NOT public)**: portfolio = shared engine; later outputs = expat courses (same content pipeline, different audience), rental-income path funded by AI-eng income. One system, three outputs.
 
 ## Open questions (Mick)
-- [ ] Verify hache.app root not serving anything public (agent checks at DNS wiring time)
+- [ ] Verify hector.app root not serving anything public (agent checks at DNS wiring time)
 
 ## Chat·hector metrics (decided 2026-09-07 — aggregate-only, zero content)
 - Active-days streak · Messages/week · Uptime % (30d) · Bridge requests served + model-routing split · Response latency p50

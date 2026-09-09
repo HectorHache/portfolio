@@ -31,7 +31,7 @@ The portfolio must be flashy enough to win a 60-second skim and honest enough to
 - Hosting: Cloudflare Workers under hector.app. Identity: one hector.app umbrella (hub; GitHub = HectorHache; hache.app + pym.one retired). Live dashboard = YES as hero element (aggregate stats only). Drops UI pass = along the way, not a blocker. Chat·hector = blurred screenshots + counts-only metrics, usage counts deferred until real. Exclusions list = fixed (see principles). Repos NOT required; max 3 public repos.
 
 ## 6. EVIDENCE INVENTORY (what ACTUALLY exists today — do not invent artifacts)
-- ✅ drops.hache.app (public, live)
+- ✅ drops.hector.app (public, live)
 - ✅ RAM table: 18→8 omp sessions, RSS 6.7→4.8 GB, crash-loop forensics write-up
 - ✅ 22 providers / ~380 models config + per-model health verification records
 - ✅ 47-skill agent capability library (public-safe descriptions)

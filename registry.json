@@ -98,7 +98,7 @@
    "status": "GROWING",
    "public": true,
    "evidence": [
-    "drops.hache.app live",
+    "drops.hector.app live",
     "gql + Kasada CI reverse-engineering write-up",
     "fully working; optimization + refactor in progress"
    ],
@@ -118,7 +118,7 @@
    "card": "A self-built four-model debate skill produced the starting line; an approval gate that only I can pass locked it in; and the site was verified with browser automation. A portfolio built by the systems it describes.",
    "notes": [
     "v10 (2026-09-08): OG meta + favicon + og-card.png, career stats strip (10+ yrs / 10.000+ agents / 24/7 / 47 skills), closing CTA, print stylesheet, rebuilt stamp, a11y (reduced-motion + focus-visible), #method cross-link, tooling notes expandable, evidence lines refactored, flow diagram all-equal 2-line cards",
-    "dash landing page prepared at dash-landing/ (dash.hache.app project)",
+    "dash landing page prepared at dash-landing/ (dash.hector.app project)",
     "DEPLOY.md + deploy.sh ready; gate: Mick green light"
    ]
   },
