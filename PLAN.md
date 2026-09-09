@@ -100,7 +100,7 @@
 - **P1** Registry v1 (JSON source of truth, 12 projects, evidence artifacts defined) — NEXT
 - **P2** Pre-shortlist pass → THE DEBATE (5→4 one-liners, frame approved, rounds, split judgment) → starting line
 - **P3** Evidence & builds guided by starting line: live dashboard (push→KV), drops UI pass, chat metrics/screenshots pack, sanitization checklist applied
-- **P4** Site build (gates: mobile, LCP<2s, ego-browser verify) + identity layer + launch checklist (link integrity, GitHub/LinkedIn, pym.one, job-pipeline wiring)
+- **P4** Site build (gates: mobile, LCP<2s, ego-browser verify) + identity layer + launch checklist (link integrity, GitHub/LinkedIn, job-pipeline wiring)
 - **P5** Rolling: monthly gated ritual, retire rule, auto metrics, skills section, creator-lane artifacts
 
 ## Provider health snapshot (2026-09-07 — PACED full sweep ~12:00 + earlier ~11:20)
