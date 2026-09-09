@@ -64,7 +64,7 @@
 
 ## Decisions (2026-09-04, Mick-approved)
 - **Positioning one-liners** (5, ALL sent to debate 2026-09-07): 1) "I spent a decade making 10,000-agent operations predictable. Now I build the agents." 2) "I built systems that ran call centers for a decade. Now I build systems that run themselves." 3) "From Erlang-C to agents: I make complexity run on rails — 10,000 seats then, 24/7 AI stack now." 4) "Ask my stack: it never sleeps. +10 years ops discipline, now building agents that work while I improve them." 5) "I spent over a decade making +10.000-agent operations predictable. Now I build the agents that run themselves." — pre-shortlist pass (Gemini-3.8-flash scores vs clarity/uniqueness/credibility/role-fit) → 4 finalists → debate champions.
-- **Identity map**: hector.app → LinkedIn (unchanged) · hache.app → portfolio root (verify root free) · pym.one → redirect to GitHub PythonMalone · GitHub bio + LinkedIn Featured bridge to portfolio. GitHub handle stays PythonMalone.
+- **Identity map**: hector.app umbrella (hub + subdomains) · hache.app and pym.one retired · public GitHub = HectorHache · PythonMalone stays private/personal.
 - **Hosting**: Cloudflare Pages on hache.app (free: unlimited bandwidth/requests, 500 builds/mo, existing deterministic auto-deploy skill). Verify hache.app zone is on Cloudflare.
 - **Live dashboard**: YES as hero element ("watch my stack run itself") — aggregate stats only.
 - **Chat·hache**: blurred screenshots OK; usage counts deferred until real daily usage exists (second user onboarding). v1 card = architecture + SSO + private-by-design.
