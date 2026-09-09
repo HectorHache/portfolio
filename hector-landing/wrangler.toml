@@ -1,0 +1,13 @@
+# hector.app hub landing — Héctor Miguel links page.
+# Worker: hector-landing. Deterministic single file; same theme family as the portfolio.
+name = "hector-landing"
+compatibility_date = "2026-09-08"
+workers_dev = true
+
+assets = { directory = "./site" }
+
+# Hub on the apex and www.
+routes = [
+  { pattern = "hector.app", custom_domain = true },
+  { pattern = "www.hector.app", custom_domain = true },
+]

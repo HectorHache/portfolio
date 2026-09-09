@@ -1,79 +1,63 @@
-# Deploy guide: portfolio + dash landing (Cloudflare Pages)
+# Deploy guide — portfolio + pym.one launcher (Cloudflare Workers)
 
-**Status: prepared 2026-09-08. NOT executed. Gate: Mick's green light after final review.**
+**Status: 2026-09-08 — LIVE.** The `pym.one` zone is on Cloudflare (NS etta/bruce.ns.cloudflare.com, account: Pythonmalone@gmail.com's Account). Three custom domains registered account-wide. Everything below supersedes the old Pages-era DEPLOY.md.
 
-## What gets published where
-| Artifact | Source dir | CF Pages project | Custom domains |
+## What is live / where
+
+| Host | Serves | CF Worker / Project | Source dir |
 |---|---|---|---|
-| Portfolio | `site/` | `portfolio-hache` | `hache.app` (apex) + `portfolio.pym.one` |
-| Dash landing | `dash-landing/` | `dash-hache` | `dash.hache.app` |
+| `portfolio.pym.one` | Portfolio (v9+) | `portfolio-hache` (Worker) | `~/Projects/portfolio/site` |
+| `pym.one` + `www.pym.one` | Launcher landing | `pym-home` (Worker) | `~/Projects/portfolio/pym-home/site` |
+| `drops.hache.app` | Drops watchdog | Pages project `drops-watchdog` (zone-less custom domain, SAME account) | `~/Documents/Workspaces/drops` |
 
-Site is fully static + deterministic (single file, no build step). `deploy.sh` = `npx wrangler pages deploy <dir> --project-name=<name>` (wrangler not installed yet; npx pulls it on first run, or `bunx wrangler`).
+## Deploy (deterministic, byte-stable)
 
----
+Prereq: `npx wrangler login` once (browser OAuth — carries full account perms; API tokens hit the 10405 wall on Workers custom domains).
 
-## Step 1: Cloudflare Pages projects (in the browser, ~5 min)
-
-1. cloudflare.com → log in → left menu **Workers & Pages** → **Create** → **Pages** tab → **Upload assets** (direct upload, no git needed).
-2. **Project `portfolio-hache`**: name it exactly, then upload the **`site/` folder** (contains index.html + assets/). Deploy.
-3. **Project `dash-hache`**: same flow, upload the **`dash-landing/` folder**.
-4. Note each project's `*.pages.dev` URL (shown on the project page after deploy), e.g. `portfolio-hache.pages.dev`.
-
-Alternative (CLI): `npx wrangler login` once in a terminal, then `./deploy.sh`.
-
-## Step 2: Custom domains (per project → **Custom domains** → **Add custom domain**)
-
-Cloudflare shows the exact DNS records it wants **after you type the domain**. It needs the pages.dev project to be live first (cert issuance). Add each record in the registrar's DNS panel, then click **Activate** once CF reports the record verified.
-
-### portfolio.pym.one → project `portfolio-hache`
-1. CF: add custom domain `portfolio.pym.one` → it shows (a) a **CNAME** and (b) a **TXT** `_cf-custom-hostname.portfolio` with a verification value.
-2. **pym.one DNS panel** (the registrar that hosts pym.one; likely Porkbun, same account as hector.app):
-   - Add **CNAME**: Host `portfolio` → Answer `<portfolio-hache>.pages.dev` → TTL 600.
-   - Add **TXT**: Host `_cf-custom-hostname.portfolio` → Answer = the value CF showed.
-3. Back in CF → Activate. Cert issue + activation takes seconds to minutes.
-4. **Delete the OLD public A record**: in the same pym.one panel, delete the A record with Host `portfolio` (or `portfolio.pym.one`) pointing to `100.123.82.89`. (Verified 2026-09-08 via `dig @1.1.1.1` — it exists and publicly leaks the tailnet IP.) Keeping it would split traffic between the old tailnet IP and Cloudflare.
-5. **Remove the NextDNS Rewrite** (see "NextDNS cleanup" below). This one is critical: the rewrite shadows public DNS for all tailnet devices, so without removing it your laptop/phone would keep hitting the (now-dead) tailnet server instead of Cloudflare.
-
-### hache.app apex → project `portfolio-hache`
-1. CF: add custom domain `hache.app` → for an apex on a non-CF zone CF shows **A/AAAA records** (or offers ALIAS guidance).
-2. **hache.app DNS panel** (Porkbun): add those A/AAAA records for Host `hache.app` (or a Porkbun **ALIAS** `hache.app` → `<portfolio-hache>.pages.dev` if CF presents it) + the TXT verification CF shows.
-3. Existing subdomains are untouched: `chat.hache.app` (tailnet, NextDNS rewrite + root Caddy), `drops.hache.app` (already CF Pages), `dash.hache.app` (below).
-
-### dash.hache.app → project `dash-hache`
-1. CF: add custom domain `dash.hache.app` → CNAME + TXT shown.
-2. Porkbun: **CNAME** Host `dash` → `<dash-hache>.pages.dev` + the TXT.
-3. NextDNS: **no rewrite exists or should exist** for dash.hache.app — it must resolve publicly.
-
-## NextDNS cleanup (the rewrite to drop)
-- Dashboard: nextdns.io → **Setup** → the profile used by the tailnet (the one whose endpoint is configured in Tailscale Admin DNS, or per-device) → **Rewrites** tab.
-- Find the row `portfolio.pym.one` → **delete** it. (It currently maps `portfolio.pym.one` → `100.123.82.89`, the Mac's tailnet IP, so only tailnet devices could resolve it during review.)
-- Why: after publish, public DNS must answer for portfolio.pym.one (CNAME → pages.dev). If the NextDNS rewrite survives, every tailnet device would resolve it to the dead tailnet IP instead of Cloudflare = "works on phone LTE, broken on laptop" split-brain. Deleting it makes tailnet devices fall back to public DNS, which now points at Cloudflare.
-- Verify after deletion: `dig @100.100.100.100 portfolio.pym.one` (tailnet DNS) should show the pages.dev CNAME chain, NOT `100.123.82.89`.
-- The Tailscale Admin DNS **nameserver entry** for NextDNS stays; only the Rewrite row goes.
-
-## Step 3: Verify before take-down
 ```bash
-curl -sI https://portfolio.pym.one            # expect 200 from pages.dev edge
-curl -sI https://hache.app                    # expect 200
-curl -sI https://dash.hache.app               # expect 200
-curl -sI https://hache.app/assets/og-card.png # expect 200 image/png (1200x630)
-dig @100.100.100.100 portfolio.pym.one        # must NOT show 100.123.82.89
+cd ~/Projects/portfolio          && npx wrangler deploy   # portfolio-hache
+cd ~/Projects/portfolio/pym-home && npx wrangler deploy   # pym-home
 ```
 
-## Step 4: Take-down (only after green light + verify)
-1. Kill the review server: `kill $(pgrep -f 'serve.py')` (bound 100.123.82.89:8777).
-2. Porkbun: confirm the old portfolio A record is gone (Step 2.4).
-3. NextDNS: confirm the rewrite is gone (Step "NextDNS cleanup").
-4. Optional: uninstall nothing else; the serve.py file stays for local-only serving.
+Or `./deploy.sh` for both. Each project has its own `wrangler.toml`: name, compatibility_date, `workers_dev = true` (**REQUIRED** — omitting it disables the workers.dev URL on deploy), `assets.directory`, and `routes` with `custom_domain = true`. Re-deploys are idempotent; unchanged assets upload nothing.
 
-## Troubleshooting the review server (learned 2026-09-08)
-- Symptom "can't reach portfolio.pym.one:8777 from any device": the server process had **died** (no crash logs; check first before blaming DNS/firewall).
-- Diagnose: `ps aux | grep serve.py`, `lsof -nP -iTCP:8777 -sTCP:LISTEN`, `curl -s -o /dev/null -w '%{http_code}' http://100.123.82.89:8777/`.
-- Restart: `cd ~/Projects/portfolio && nohup python3 serve.py > /tmp/portfolio_server.out 2>&1 &` (restored 2026-09-08, PID verified).
-- Optional hardening before publish: a tiny launchd KeepAlive agent so it survives reboots (proposed, not installed — Mick decides).
+## Custom domains on Workers — the rules (learned the hard way, 2026-09-08)
 
-## Notes / gotchas
-- No redirect between drops.hache.app and dash.hache.app (Mick's explicit decision: each keeps its own artifact).
-- `og:url`/canonical in the site point to `https://hache.app/`; hector.app stays the LinkedIn/contact redirect (Porkbun URL forwarding, verified working 2026-09-08: 301 → linkedin.com/in/hectormm, www added).
-- og-card.png was rasterized with a fallback pipeline (qlmanage + pngtool); re-render cleanly before publish if desired (source: site/assets/og-card.svg).
-- Determinism: site is a single static file; re-deploys are byte-stable unless content changes. No `_headers`/`_redirects` needed.
+- Workers custom domains **require the hostname's zone inside the CF account**. All three symptom paths mean exactly that, no auth/settings fix exists:
+  - Dashboard add → code 10000 "Unable to check" (silent revert, "does nothing")
+  - API token `POST /accounts/{id}/workers/domains` → 10405
+  - wrangler deploy → 10082 "Can't infer zone from route"
+  - Fix: move the zone's nameservers to CF, then attach via wrangler OAuth `custom_domain` route.
+- After the NS move, CF auto-imports old registrar records → attach fails with 100117 until you delete the conflicting apex A / www CNAME (keep subdomain CNAMEs that point at your workers.dev; MX/TXT harmless).
+- Full playbook: managed skill `cf-workers-custom-domain-external-zone` — also covers the macOS mDNSResponder stale-negative-cache trap (curl "Could not resolve host" while dig works → `sudo killall -HUP mDNSResponder && dscacheutil -flushcache`).
+
+## DNS / zone state
+
+| Domain | Nameservers | Notes |
+|---|---|---|
+| `pym.one` | Cloudflare (active) | apex → launcher; `portfolio.pym.one` → portfolio |
+| `hache.app` | Porkbun | `drops.hache.app` CNAME → `drops-watchdog.pages.dev` (zone-less Pages custom domain); NO public records for chat/dash/www/apex |
+| `chat.hache.app` | none public | tailnet-only via NextDNS rewrite → `100.123.82.89` (Mac tailnet IP); TLS LE cert `CN=chat.hache.app`; uvicorn terminator |
+
+## ChatUI stack map (tailnet-only)
+
+- `open-webui serve` (uvicorn, 127.0.0.1:8390, launchd `org.hache.chat.openwebui`)
+- bridge `server.mjs` (node, :8484), whisper_worker.py (:8499), watchdog (300s probes)
+- 443 terminator = uvicorn + LE cert for chat.hache.app (owner process to pin during migration; caddy user agent retired 2026-09-04, root daemon plist exists but no caddy process runs)
+
+## Roadmap — persona consolidation (Mick-driven, in progress)
+
+- `hector.app` → stays the LinkedIn redirect ONLY (Porkbun URL forwarding, verified 301).
+- `hache.app` → **retire**. Move everything under `pym.one`:
+  - drops: `drops.hache.app` → `drops.pym.one` (Pages custom-domain swap; same account → safe)
+  - dash: attach `dash-hache` worker to `dash.pym.one` (worker already exists, no custom domain yet)
+  - chat: `chat.hache.app` → `chat.pym.one` (NextDNS rewrite + LE cert reissue + terminator swap)
+  - then delete hache.app records at Porkbun
+- Text: remove "/ Hache" persona refs (landing done 2026-09-08; portfolio copy sweep pending)
+- Projects: consolidate under one tidy path — dry-run inventory done 2026-09-08 (Mick picks what/how/when; **no moves yet**)
+
+## Housekeeping log (2026-09-08)
+
+- Killed orphaned review server `serve.py` (was 100.123.82.89:8777) ✓
+- Old portfolio A record + NextDNS rewrite: already gone ✓
+- `.cftemp` API token: file deleted locally; **revoke in CF dashboard** (self-revoke returns 403 — needs User.Tokens Write)

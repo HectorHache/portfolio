@@ -1,0 +1,11 @@
+# Portfolio site on Cloudflare Workers (static assets).
+# Worker: hector-portfolio. Deterministic deploy: site/ is byte-stable.
+name = "hector-portfolio"
+compatibility_date = "2026-09-08"
+workers_dev = true
+
+assets = { directory = "./site" }
+
+routes = [
+  { pattern = "portfolio.hector.app", custom_domain = true },
+]
