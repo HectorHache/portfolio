@@ -24,7 +24,7 @@ Recruiter-facing portfolio for Héctor Miguel (Hache/Mick), NL/EU-remote AI-engi
 - "Ask my stack: it never sleeps" · terminal/phosphor everywhere · glassy-SaaS template look · playful-cards · unverifiable numbers as lead hook · provider-count as lead signal · Erlang-C in the hook · static first scroll · "hire me" begging · AI-generated copy tells (unai: no "delve", no em-dash spam, no hollow superlatives) · long paragraphs (recruiter skim).
 
 ## 5. Content rules
-- Public-safe ONLY: no keys, no internal paths, no PID, no household content beyond network topology. Chat·hache = blurred screenshots + counts-only. PVault = diagram only. Homelab card = media-automation engineering framing, zero piracy references. Providers card = honest (free pools dry up, channels hammer down, WAF walls — "gateway engineering with the scars").
+- Public-safe ONLY: no keys, no internal paths, no PID, no household content beyond network topology. Chat·hector = blurred screenshots + counts-only. PVault = diagram only. Homelab card = media-automation engineering framing, zero piracy references. Providers card = honest (free pools dry up, channels hammer down, WAF walls — "gateway engineering with the scars").
 - Every card carries an evidence line (link/screenshot/metric) — evidence rule.
 
 ## 6. Mermaid source (embed for Method section)

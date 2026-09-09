@@ -64,7 +64,7 @@
 
 **D3 follow-on scope (Mick, same session):**
 - **Home server rebuild** (Docker containers on the Fedora homelab) → include as portfolio project, demonstrating Docker/Linux/scripting/apps breadth. CAREFUL framing: arr stack is piracy-adjacent → present as self-hosted media-automation engineering, zero piracy references.
-- **Chat·hache demo**: recruiters get a small public version with **RAG over the architecture** (no PID ever) — natural-language Q&A about the system; Vertex/Gemini backend; **soft token budgets** (per-session caps, graceful quota messages — NO hard limits that could look like config failure).
+- **Chat·hector demo**: recruiters get a small public version with **RAG over the architecture** (no PID ever) — natural-language Q&A about the system; Vertex/Gemini backend; **soft token budgets** (per-session caps, graceful quota messages — NO hard limits that could look like config failure).
 - **Meta-card**: THIS portfolio pipeline (debate → gate → build → verify) becomes a portfolio project itself — "a portfolio built by its own system."
 - **Mermaid.js diagrams** embedded site-wide (topology, pipeline, architecture, homelab).
 
@@ -72,7 +72,7 @@
 
 The locked anchors: **drops.hache.app** (live delivery) + **RAM table** (measured discipline). The 3rd slot must survive the same test Mick just applied: **not reproducible by anyone who can inject an API, not dependent on free-credit pools, verifiable today.**
 
-**RECOMMENDATION 1 — Chat·hache live gateway** (product + real users + security engineering)
+**RECOMMENDATION 1 — Chat·hector live gateway** (product + real users + security engineering)
 *Blurred screenshot + one-line architecture (Google SSO, LE TLS over a tailnet-only domain, zero data leaks).*
 - Beats the API-injection test: it's a deployed, OAuth-secured product with real daily users — "anyone can inject an API, not everyone ships a private household gateway with Let's Encrypt DNS-01 over a dead Tailscale NS-delegation."
 - NL/EU bonus: "private by design" is data-protection maturity — exactly the message that lands here.
@@ -91,7 +91,7 @@ The locked anchors: **drops.hache.app** (live delivery) + **RAM table** (measure
 - Fits the editorial-minimal aesthetic as the one interactive element.
 - Risk: NOT built yet (to-make); hero needs it soon or it becomes a body artifact.
 
-**Synthesis recommendation:** **Chat·hache (R1) as the hero third, setupclone as the first body card linked from the hero** — product + users + security in the trio; code inspection one click away. Topology diagram becomes the about-section's interactive showpiece.
+**Synthesis recommendation:** **Chat·hector (R1) as the hero third, setupclone as the first body card linked from the hero** — product + users + security in the trio; code inspection one click away. Topology diagram becomes the about-section's interactive showpiece.
 
 ---
 

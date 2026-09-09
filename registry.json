@@ -59,7 +59,7 @@
   },
   {
    "id": "chat-demo",
-   "name": "Chat·hache Demo — talk to the architecture",
+   "name": "Chat·hector Demo — talk to the architecture",
    "status": "IN BUILD",
    "public": true,
    "evidence": [
@@ -82,7 +82,7 @@
   },
   {
    "id": "chat-hache",
-   "name": "Chat·hache.app — private household AI gateway",
+   "name": "Chat·hector.app — private household AI gateway",
    "status": "GROWING",
    "public": true,
    "evidence": [
