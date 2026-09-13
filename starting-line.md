@@ -37,7 +37,7 @@
 
 1. **drops.hector.app** (live, public, un-fakeable running delivery)
 2. **RAM table** (18→8 sessions / 6.7→4.8 GB — quantified systems discipline)
-3. **22-provider / ~380-model health matrix** (visible verified scale)
+3. **26-account / 181-model health matrix** (visible verified scale)
 
 **Cut to body:** setupclone public repo (pays off on click → better for the hiring-manager verification step than a skim-level hero signal).
 

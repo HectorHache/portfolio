@@ -55,7 +55,7 @@
     "crash-loop forensics write-up",
     "live dashboard (hero)"
    ],
-   "card": "A household AI stack that runs itself: multi-agent orchestration, 20+ LLM providers unified, self-healing services, live self-monitoring dashboard. Built to be boring — that's the point. Laptop node runs Omarchy (AI-first OS by DHH), customized with own shell plugins and packaged into setupclone. Toolbelt: evaluated Cursor/Open Claw/Cherry Studio/J.ai/DeepSeek Harness/ZCode — settled on herdr+omp. Choice by testing, not by hype."
+   "card": "A household AI stack that runs itself: multi-agent orchestration, 26 provider accounts across 14 services unified, self-healing services, live self-monitoring dashboard. Built to be boring — that's the point. Laptop node runs Omarchy (AI-first OS by DHH), customized with own shell plugins and packaged into setupclone. Toolbelt: evaluated Cursor/Open Claw/Cherry Studio/J.ai/DeepSeek Harness/ZCode — settled on herdr+omp. Choice by testing, not by hype."
   },
   {
    "id": "chat-demo",
@@ -131,7 +131,7 @@
     "public-safe diagram",
     "write-up with numbers + honest reliability lessons"
    ],
-   "card": "22 LLM providers, ~380 models, unified in one config with per-model health verification — including the hard lessons: free-credit pools dry up, premium channels hammer down, WAF walls go up. Gateway engineering with the scars to prove it."
+   "card": "26 provider accounts across 14 services, 181 distinct models, unified in one config with per-model health verification — including the hard lessons: free-credit pools dry up, premium channels hammer down, WAF walls go up. Gateway engineering with the scars to prove it."
   },
   {
    "id": "job-pipeline",

@@ -14,7 +14,7 @@ The portfolio must be flashy enough to win a 60-second skim and honest enough to
 
 ## 2. WHO (the candidate — facts only)
 - Héctor Miguel (Hache/Mick), Netherlands. Global Sr. WFM/Business Operations Architect: Erlang-C capacity planning, 10,000-agent call-center ops, multi-BU SLA reconciliation (Klarna, Microsoft, 5CA).
-- Now: Agentic AI Engineering. Runs on a Mac Mini M4 Pro: herdr/omp multi-agent orchestration, Hermes bot fleet, 20+ LLM providers / ~380 models unified and health-verified, automation pipelines, launchd/TCC forensics, reverse-engineered APIs (Twitch gql + Kasada, USDB karaoke protocol).
+- Now: Agentic AI Engineering. Runs on a Mac Mini M4 Pro: herdr/omp multi-agent orchestration, Hermes bot fleet, 26 provider accounts across 14 services / 181 distinct models unified and health-verified, automation pipelines, launchd/TCC forensics, reverse-engineered APIs (Twitch gql + Kasada, USDB karaoke protocol).
 
 ## 3. TARGET READER (who judges the result)
 - Recruiters (60-second skim; catch attention, no jargon walls) AND hiring managers (technical credibility; will check claims). NL/EU market. English-language site.
@@ -33,7 +33,7 @@ The portfolio must be flashy enough to win a 60-second skim and honest enough to
 ## 6. EVIDENCE INVENTORY (what ACTUALLY exists today — do not invent artifacts)
 - ✅ drops.hector.app (public, live)
 - ✅ RAM table: 18→8 omp sessions, RSS 6.7→4.8 GB, crash-loop forensics write-up
-- ✅ 22 providers / ~380 models config + per-model health verification records
+- ✅ 26 provider accounts / 181 distinct models config + per-model health verification records
 - ✅ 47-skill agent capability library (public-safe descriptions)
 - ✅ setupclone repo (de-personalized, installers) — public-safe
 - ✅ Chat·hector: live, OAuth SSO, TLS over tailnet; blurred screenshots possible; usage counts NOT yet meaningful (usage just started)
@@ -49,7 +49,7 @@ The portfolio must be flashy enough to win a 60-second skim and honest enough to
 | agent-stack | SHIPPED | "I build systems that run" (numbers: 18→8, 6.7→4.8 GB, self-healing) |
 | chat-hache | GROWING | "I ship things people use" (real users, private-by-design) |
 | drops | SHIPPING | "I reverse-engineer the impossible" (gql+Kasada, public dashboard) |
-| providers | SHIPPED | "Ecosystem fluency" (22 providers, 380 models, health-verified) |
+| providers | SHIPPED | "Ecosystem fluency" (26 provider accounts across 14 services, 181 distinct models, health-verified) |
 | job-pipeline | SHIPPED | "I dogfood my own tools" (found-my-own-role pipeline) |
 | karaoke | SHIPPING | "Engineering is also fun" (USDB protocol, XLR, projector) |
 | setupclone | SHIPPED | "I productize my workflows" (public repo, installers) |
