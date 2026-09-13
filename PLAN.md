@@ -20,7 +20,7 @@
 | **Agent stack (Mac Mini)** | SHIPPED | RAM table 34→8 processes, 10.3→4.8GB (real figures 2026-09-07); crash-loop forensics | Write-up with numbers + live dashboard |
 | **Chat·hector.app** | GROWING | Live, OAuth SSO, TLS over tailnet; NOT yet in daily use | Blurred screenshots OK; usage counts ONLY after real daily usage (second user onboarding); v1 card = architecture + SSO + "private by design" story |
 | **Drops watchdog** | GROWING | drops.hector.app live, gql+Kasada CI reverse-eng; fully working | UI/visual pass (½ day) + refactor spots → flagship |
-| **Provider/API engineering** | SHIPPED | 10 gateways, 130+ models unified, health-verified | Public-safe diagram + write-up |
+| **Provider/API engineering** | SHIPPED | 26 provider accounts across 14 services, 181 distinct models, health-verified | Public-safe diagram + write-up |
 | **Job-hunt pipeline** | SHIPPED | 23+ sources, scoring, cron→DM | Architecture diagram; dogfooding story |
 | **Karaoke (USDB/USDX)** | SHIPPED | Fully shipped, probed and working end-to-end (app+XLR mics+projector) 2026-09-07 | Photos + pipeline diagram; fun project |
 | **Setupclone repo** | SHIPPED | Designed public-safe already | The 2nd public repo (after portfolio) |

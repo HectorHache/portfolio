@@ -1,0 +1,7 @@
+# Never ship these as public assets (same syntax as .gitignore).
+# Wrangler skips matching files in this directory on deploy.
+.DS_Store
+.wrangler
+.wrangler/**
+.assetsignore
+README*
